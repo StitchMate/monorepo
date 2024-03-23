@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "storybook": "8.0.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.2.22",
+    "@storybook/addon-actions": "^8.0.0",
+    "@storybook/addon-essentials": "^8.0.0",
+    "@storybook/addon-links": "^8.0.0",
+    "@storybook/blocks": "^8.0.0",
+    "@storybook/test": "^8.0.0",
+    "@storybook/web-components": "^8.0.0",
+    "@storybook/web-components-vite": "^8.0.0",
+    "@unocss/preset-wind": "^0.58.5",
+    "lit": "^3.1.2",
+    "unocss": "^0.58.5"
+  },
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  }
+}

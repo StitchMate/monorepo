@@ -1,0 +1,19 @@
+project:
+  description: 'Common core code for all backend applications.'
+  maintainers: ['@cawfeecoder']
+
+language: 'rust'
+type: 'library'
+
+
+fileGroups:
+  sources:
+    - 'crates/*/src/**/*'
+    - 'crates/*/Cargo.toml'
+    - 'Cargo.toml'
+
+tasks:
+  build:
+    command: 'cargo build'
+    inputs:
+      - '@globs(sources)'

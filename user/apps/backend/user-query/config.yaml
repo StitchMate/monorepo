@@ -1,0 +1,23 @@
+repository:
+  type: "postgres"
+  config:
+    host: "localhost"
+    port: 5432
+    username: "postgres"
+    database_name: "postgres"
+    migration_path: "../../../packages/backend/query/src/migrations"
+adapters:
+  graphql:
+    port: 4001
+  rest:
+    port: 4000
+eventbus:
+  type: "nats"
+  config:
+    address: "nats://localhost:4222"
+projectors:
+  user:
+    topic: "user.*"
+    durable_name: "consumer_user_query_projector_1"
+
+

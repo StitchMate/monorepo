@@ -1,0 +1,12 @@
+node:
+  version: '20.0.0'
+  packageManager: 'pnpm'
+  pnpm:
+    version: '8.15.4'
+
+rust:
+  version: 'nightly-2024-02-29'
+  bins:
+  - watchexec-cli
+  - cargo-nextest
+  syncToolchainConfig: true

@@ -1,0 +1,21 @@
+- [] Finish Structure
+- [] Finish Example
+    - [] Add Testing
+        - [] Unit Tests/BDD (Cucumber)
+        - [] Contract Tests
+        - [] Integration Tests
+        - [] E2E Test
+             - [] FE (Playwright)
+             - [] BE (Docker/Kubernetes)
+        - [] Chaos Testing
+    - [] Metrics, Logs, Traces, Alerts
+    - [] Add ReadMe
+    - [] Add CI/CD Pipeline
+      - [] Build Docker Image/Package
+      - [] Publish
+      - [] Deploy Changes To Preview Environment
+      - [] Promotion Pipeline
+        - [] Keptn
+      - [] Sync
+    - Abstract Kubernetes Deployment
+      - [] Tanka? Helm? CDK8s? Something else?

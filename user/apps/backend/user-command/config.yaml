@@ -1,0 +1,20 @@
+repository:
+  type: "postgres"
+  config:
+    host: "localhost"
+    port: 5432
+    username: "postgres"
+    database_name: "postgres"
+    migration_path: "../../../packages/backend/command/src/migrations"
+adapters:
+  graphql:
+    port: 3003
+  rest:
+    port: 3002
+eventbus:
+  type: "nats"
+  config:
+    address: "nats://localhost:4222"
+outbox:
+  timeout_seconds: 5
+

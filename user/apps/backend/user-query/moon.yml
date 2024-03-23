@@ -1,0 +1,26 @@
+id: '@stitchmate/backend/user-query-service'
+
+project:
+  description: 'Backend code for User context.'
+  maintainers: ['@cawfeecoder']
+
+language: 'rust'
+type: 'application'
+
+fileGroups:
+  sources:
+    - 'src/**/*'
+    - 'Cargo.toml'
+
+tasks:
+  build:
+    command: 'cargo build'
+    inputs:
+      - '@globs(sources)'
+  test-all:
+    command: 'cargo nextest run --cargo-quiet --locked'
+    options:
+      envFile: '.env.test'
+
+tags:
+- backend
