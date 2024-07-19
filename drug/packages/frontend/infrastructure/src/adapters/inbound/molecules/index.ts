@@ -1,0 +1,1 @@
+export { default as SMUserCard } from "./user-card";

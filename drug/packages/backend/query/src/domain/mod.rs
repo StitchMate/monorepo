@@ -1,0 +1,10 @@
+pub mod user;
+pub mod subsidiaries;
+pub mod precise_ingredient;
+pub mod manufacturer;
+pub mod package;
+pub mod ingredient;
+pub mod product;
+pub mod quantity;
+pub mod quantity_value;
+pub mod contains;

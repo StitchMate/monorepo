@@ -1,0 +1,32 @@
+id: '@stitchmate/backend/user'
+
+project:
+  description: 'Backend code for User context.'
+  maintainers: ['@cawfeecoder']
+
+language: 'rust'
+type: 'library'
+
+
+fileGroups:
+  sources:
+    - 'crates/*/src/**/*'
+    - 'crates/*/Cargo.toml'
+    - 'Cargo.toml'
+
+tasks:
+  build:
+    command: 'cargo build'
+    inputs:
+      - '@globs(sources)'
+  test-all:
+    command: 'cargo nextest run --cargo-quiet --locked'
+    options:
+      envFile: '.env.test'
+  test-common:
+    command: 'cargo nextest run --cargo-quiet --locked -p user-common'
+    options:
+      envFile: '.env.test'
+
+tags:
+- backend

@@ -9,6 +9,7 @@ use user_common::{
 
 use crate::domain::user::{aggregate::UserAggregate, error::repository::UserEventRepositoryError};
 
+
 //TODO: Concrete Error Types
 #[async_trait]
 #[enum_dispatch]

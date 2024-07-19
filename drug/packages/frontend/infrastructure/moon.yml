@@ -1,0 +1,23 @@
+id: '@stitchmate/frontend/user.infrastructure'
+
+project:
+  description: 'Frontend package that maintains our User service/infrastructure client-side.'
+  maintainers: ['@cawfeecoder']
+
+language: 'typescript'
+type: 'library'
+
+fileGroups:
+  sources:
+    - 'src/**/*'
+  outputs:
+      - 'dist'
+
+tasks:
+  build:
+    command: 'vite build'
+    inputs:
+      - '@globs(sources)'
+
+tags:
+  - frontend

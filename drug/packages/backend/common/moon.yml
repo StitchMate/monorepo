@@ -1,0 +1,18 @@
+project:
+  description: 'Common backend code for User context shared by command/query.'
+  maintainers: ['@cawfeecoder']
+
+language: 'rust'
+type: 'library'
+
+
+fileGroups:
+  sources:
+    - 'src/**/*'
+    - 'Cargo.toml'
+
+tasks:
+  build:
+    command: 'cargo build'
+    inputs:
+      - '@globs(sources)'

@@ -1,0 +1,70 @@
+{
+  "consumer": {
+    "name": "RESTUserConsumer"
+  },
+  "interactions": [
+    {
+      "description": "a request to get a user",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "User 1 exists",
+          "params": {
+            "user": {
+              "createdAt": "2024-03-17T21:58:19.497Z",
+              "email": "test@test.com",
+              "id": "1",
+              "name": {
+                "first": "Test",
+                "last": "User"
+              },
+              "updatedAt": "2024-03-17T21:58:19.497Z"
+            }
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/user/1"
+      },
+      "response": {
+        "body": {
+          "content": {
+            "createdAt": "2024-03-17T21:58:19.497Z",
+            "email": "test@test.com",
+            "id": "1",
+            "name": {
+              "first": "Test",
+              "last": "User"
+            },
+            "updatedAt": "2024-03-17T21:58:19.497Z"
+          },
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "status": 200
+      },
+      "type": "Synchronous/HTTP"
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "12.3.0"
+    },
+    "pactRust": {
+      "ffi": "0.4.16",
+      "models": "1.1.19"
+    },
+    "pactSpecification": {
+      "version": "4.0"
+    }
+  },
+  "provider": {
+    "name": "RESTUserProvider"
+  }
+}

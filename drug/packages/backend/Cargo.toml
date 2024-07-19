@@ -1,0 +1,45 @@
+[workspace]
+resolver = "2"
+
+members = ["command", "common", "query"]
+
+[workspace.package]
+version = "0.0.1"
+edition = "2021"
+description = "Backend for User context."
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.dependencies]
+async-graphql = { version = "7.0.2", features = ["chrono"] }
+async-graphql-axum = "7.0.2"
+anyhow = "1.0.80"
+axum = "0.7.4"
+async-trait = "0.1.77"
+async-nats = "0.33.0"
+base = { path = "../../../core/packages/backend/base", features = ["derive"] }
+chrono = "0.4.34"
+educe = "0.5.11"
+enum_dispatch = "0.3.12"
+futures = "0.3.30"
+futures-util = "0.3.30"
+thiserror = "1.0"
+tower-http = { version = "0.5.2", features = ["cors"] }
+validator = { version = "0.16", features = ["derive"] }
+struct-field-names-as-array = "0.3.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", features = ["raw_value"] }
+sqlx = { version = "0.7", features = [
+    "runtime-tokio-rustls",
+    "sqlite",
+    "chrono",
+    "postgres",
+] }
+tokio = { version = "1.36.0", features = ["full"] }
+tracing = "0.1.40"
+ulid = "1.1.2"
+axum-test = "14.4.0"
+once_cell = "1.19.0"
+mockall = "0.12.1"
+dgraph-tonic = {version = "0.10", features = ["all"]}

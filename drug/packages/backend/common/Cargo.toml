@@ -1,0 +1,36 @@
+[package]
+name = "user-common"
+version.workspace = true
+edition.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+async-graphql = { workspace = true }
+async-graphql-axum = { workspace = true }
+async-nats = { workspace = true }
+futures-util = { workspace = true }
+base = { workspace = true }
+async-trait = { workspace = true }
+anyhow = { workspace = true }
+once_cell = { workspace = true }
+enum_dispatch = { workspace = true }
+futures = { workspace = true }
+chrono = { workspace = true }
+educe = { workspace = true }
+validator = { workspace = true }
+thiserror = { workspace = true }
+ulid = { workspace = true }
+sqlx = { workspace = true, features = [
+    "runtime-tokio-rustls",
+    "sqlite",
+    "chrono",
+    "postgres",
+] }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+
+[dev-dependencies]
