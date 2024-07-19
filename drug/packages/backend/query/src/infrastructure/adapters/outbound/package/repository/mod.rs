@@ -6,6 +6,7 @@ use postgres::MockPostgresPackagesQueryRepository;
 use crate::{application::ports::outbound::package_repository::{PackageQueryRepository}, domain::package::error::repository::PackageQueryRepositoryError};
 
 mod postgres;
+mod dgraph;
 
 #[enum_dispatch(PackagesQueryRepository)]
 #[derive(Debug)]

@@ -1,15 +1,10 @@
 use std::sync::Arc;
 
 use async_trait::async_trait;
-use crate::application::ports::outbound::package_repository::PackageQueryRepository;
 use base::infrastructure::adapters::outbound::storage::postgres::PostgresConnector;
-use chrono::DateTime;
-use chrono::Utc;
 use mockall::automock;
-use sqlx::Error;
-use sqlx::Postgres;
-use tracing::debug;
-
+use crate::application::ports::outbound::package_repository::PackageQueryRepository;
+use crate::domain::package::error::repository::PackageQueryRepositoryError;
 use crate::domain::package::model::PackagesQueryModel;
 
 const TABLE_NAME: &str = "packages";
@@ -21,8 +16,8 @@ pub struct PostgresPackagesQueryRepository {
 
 #[async_trait]
 #[automock]
-impl PackagesQueryRepository for PostgresPackagesQueryRepository {
-    async fn migrate(&self, path: String) -> Result<(), PackagesQueryRepositoryError> {
+impl PackageQueryRepository for PostgresPackagesQueryRepository {
+    async fn migrate(&self, path: String) -> Result<(), PackageQueryRepositoryError> {
         return self.connector.migrate(path).await.map_err(|e| e.into());
     }
 
@@ -32,7 +27,7 @@ impl PackagesQueryRepository for PostgresPackagesQueryRepository {
         &self,
         id: &str,
         _fields: Vec<String>,
-    ) -> Result<PackagesQueryModel, PackagesQueryRepositoryError> {
-        return PackagesQueryRepositoryError::UnknownError
+    ) -> Result<PackagesQueryModel, PackageQueryRepositoryError> {
+        return Err(PackageQueryRepositoryError::UnknownError)
     }
 }
