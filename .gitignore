@@ -1,0 +1,5 @@
+/bazel-*
+/.aspect
+target
+debug
+.DS_Store

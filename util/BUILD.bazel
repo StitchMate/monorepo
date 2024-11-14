@@ -1,0 +1,17 @@
+load("@crate_index//:defs.bzl", "crate_deps")
+load(
+    "@rules_rust//rust:defs.bzl",
+    "rust_library",
+)
+
+rust_library(
+    name = "util",
+    srcs = glob(["src/*.rs"]),
+    proc_macro_deps = crate_deps([
+            "async-trait"
+    ]),
+    deps = crate_deps([
+        "anyhow"
+    ]),
+    visibility = ["//visibility:public"]
+)

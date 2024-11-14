@@ -1,0 +1,31 @@
+load("@aspect_rules_lint//format:defs.bzl", "format_multirun", "format_test")
+load("@npm//:prettier/package_json.bzl", prettier = "bin")
+
+package(default_visibility = ["//:__subpackages__"])
+
+prettier.prettier_binary(
+    name = "prettier",
+    # Allow the binary to be run outside bazel
+    env = {"BAZEL_BINDIR": "."},
+    # default log level is "log" which spams on success
+    # https://prettier.io/docs/en/cli.html#--log-level
+    # NB: prettier 2 names this loglevel, in prettier 3 it's renamed log-level, see
+    # https://prettier.io/blog/2023/07/05/3.0.0.html#cli-1
+    fixed_args = ["--loglevel=warn"],
+)
+
+format_multirun(
+    name = "format",
+    rust = "@rules_rust//tools/rustfmt:upstream_rustfmt",
+    shell = "@aspect_rules_lint//format:shfmt",
+    visibility = ["//:__subpackages__"],
+    yaml = "@aspect_rules_lint//format:yamlfmt",
+    javascript = ":prettier"
+)
+
+format_test(
+    name = "format_test",
+    size = "small",
+    no_sandbox = True,  # Enables formatting the entire workspace, paired with 'workspace' attribute
+    workspace = "//:.shellcheckrc",  # A file in the workspace root, where the no_sandbox mode will run the formatter
+)

@@ -1,0 +1,4 @@
+# Bazel option defaults
+common --enable_bzlmod
+build --stamp --workspace_status_command=./tools/bazel_stamp_vars.sh
+build --@rules_rust//rust/toolchain/channel=nightly

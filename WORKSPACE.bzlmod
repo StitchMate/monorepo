@@ -1,0 +1,14 @@
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "rules_ytt",
+    sha256 = "6ba1a063e193199a24e2d3e54efd9fcba9a8ddcfd05dcdedc111de565ff5d8e1",
+    strip_prefix = "rules_ytt-0.2.1",
+    url = "https://github.com/ekhabarov/rules_ytt/releases/download/v0.2.1/rules_ytt-v0.2.1.tar.gz",
+)
+
+load("@rules_ytt//ytt:repositories.bzl", "rules_ytt_dependencies", "rules_ytt_register_toolchains")
+
+rules_ytt_dependencies()
+
+rules_ytt_register_toolchains()
