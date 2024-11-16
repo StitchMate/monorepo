@@ -5,7 +5,10 @@ go_library(
     srcs = ["main.go"],
     importpath = "github.com/stitchmate/monorepo/tolling/backend/apps/tolling-ingest/tolling/backend/apps/tolling-ingest",
     visibility = ["//visibility:private"],
-    deps = ["@com_github_globusdigital_soap//:soap"],
+    deps = [
+        "@com_github_globusdigital_soap//:soap",
+        "@com_github_go_playground_validator_v10//:validator",
+    ],
 )
 
 go_binary(
