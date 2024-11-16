@@ -8,10 +8,10 @@ rust_library(
     name = "util",
     srcs = glob(["src/*.rs"]),
     proc_macro_deps = crate_deps([
-            "async-trait"
+        "async-trait",
     ]),
+    visibility = ["//visibility:public"],
     deps = crate_deps([
-        "anyhow"
+        "anyhow",
     ]),
-    visibility = ["//visibility:public"]
 )

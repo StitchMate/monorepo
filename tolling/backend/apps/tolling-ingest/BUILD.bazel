@@ -1,0 +1,15 @@
+load("@rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "tolling-ingest_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/stitchmate/monorepo/tolling/backend/apps/tolling-ingest/tolling/backend/apps/tolling-ingest",
+    visibility = ["//visibility:private"],
+    deps = ["@com_github_globusdigital_soap//:soap"],
+)
+
+go_binary(
+    name = "tolling-ingest",
+    embed = [":tolling-ingest_lib"],
+    visibility = ["//visibility:public"],
+)

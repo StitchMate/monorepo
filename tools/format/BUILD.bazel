@@ -16,11 +16,12 @@ prettier.prettier_binary(
 
 format_multirun(
     name = "format",
+    go = "@aspect_rules_lint//format:gofumpt",
+    javascript = ":prettier",
     rust = "@rules_rust//tools/rustfmt:upstream_rustfmt",
     shell = "@aspect_rules_lint//format:shfmt",
     visibility = ["//:__subpackages__"],
     yaml = "@aspect_rules_lint//format:yamlfmt",
-    javascript = ":prettier"
 )
 
 format_test(

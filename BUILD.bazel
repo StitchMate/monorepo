@@ -1,3 +1,8 @@
+load("@gazelle//:def.bzl", "gazelle")
+# gazelle:prefix github.com/stitchmate/monorepo/tolling/backend/apps/tolling-ingest
+
 load("@npm//:defs.bzl", "npm_link_all_packages")
 
 npm_link_all_packages()
+
+gazelle(name = "gazelle")
