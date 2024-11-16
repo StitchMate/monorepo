@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/xml"
-	"errors"
 	"fmt"
 	"net/http"
 
@@ -19,6 +18,23 @@ type FooRequest struct {
 // FooResponse a simple response
 type FooResponse struct {
 	Bar string
+}
+
+type SOAPFault struct {
+	XMLName     xml.Name     `xml:"http://schemas.xmlsoap.org/soap/envelope/ Fault"`
+	FaultCode   string       `xml:"faultcode"`
+	FaultString string       `xml:"faultstring"`
+	Detail      *FaultDetail `xml:"detail,omitempty"`
+}
+
+type FaultDetail struct {
+	ValidationErrors []ValidationError `xml:"ValidationError"`
+}
+
+type ValidationError struct {
+	Field    string `xml:"field"`
+	Reason   string `xml:"reason"`
+	Location string `xml:"location"`
 }
 
 var validate *validator.Validate
@@ -46,11 +62,21 @@ func RunServer() {
 			if err := validate.Struct(fooRequest); err != nil {
 				// Convert validation errors to error message
 				if validationErrors, ok := err.(validator.ValidationErrors); ok {
-					var errorMsg string
-					for _, e := range validationErrors {
-						errorMsg += fmt.Sprintf("Field: %s, Error: %s; ", e.Field(), e.Tag())
+					fault := &SOAPFault{
+						FaultCode:   "soap:Client",
+						FaultString: "Multiple validation errors occurred",
+						Detail: &FaultDetail{
+							ValidationErrors: make([]ValidationError, len(validationErrors)),
+						},
 					}
-					return nil, errors.New(errorMsg)
+					for i, verr := range validationErrors {
+						fault.Detail.ValidationErrors[i] = ValidationError{
+							Field:    verr.Field(),
+							Reason:   verr.Tag(),
+							Location: fmt.Sprintf("/tollRequest/%s", verr.Field()),
+						}
+					}
+					return fault, nil
 				}
 				return nil, err
 			}
